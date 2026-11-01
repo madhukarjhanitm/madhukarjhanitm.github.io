@@ -128,6 +128,38 @@ h1{
   border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.03);
 }
 
+/* ---------- LeetCode card ---------- */
+.lc[hidden]{display:none}
+.lc{
+  display:flex; align-items:center; gap:20px; width:100%; max-width:360px;
+  margin:0 auto 26px; padding:16px 20px; text-align:left; text-decoration:none;
+  font-family:var(--body); color:var(--ink);
+  border:1px solid var(--line); border-radius:20px;
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  transform:translateZ(18px);
+  transition:border-color .25s, transform .25s, box-shadow .25s;
+}
+.lc:hover{border-color:rgba(255,161,22,.6); transform:translateZ(18px) translateY(-3px); box-shadow:0 14px 34px rgba(255,161,22,.15)}
+
+.lc-ring{position:relative; flex:none; width:96px; height:96px}
+.lc-ring svg{width:100%; height:100%; transform:rotate(-90deg)}
+.lc-ring circle{fill:none; stroke-width:9; stroke-linecap:butt}
+.lc-track{stroke:rgba(255,255,255,.08)}
+.lc-seg{transition:stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)}
+.lc-center{position:absolute; inset:0; display:grid; place-content:center; text-align:center; line-height:1}
+.lc-center b{font:800 1.7rem/1 var(--display); letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.lc-center span{margin-top:5px; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+
+.lc-rows{flex:1; min-width:0; display:grid; gap:9px}
+.lc-title{margin:0 0 2px; font:600 .72rem var(--body); letter-spacing:.16em; text-transform:uppercase; color:#ffa116}
+.lc-row{display:grid; grid-template-columns:54px 1fr auto; align-items:center; gap:10px; font-size:.82rem; color:var(--muted)}
+.lc-row i{height:6px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden}
+.lc-row u{display:block; height:100%; width:0; border-radius:inherit; background:var(--c); transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.lc-row em{font-style:normal; font-variant-numeric:tabular-nums; white-space:nowrap}
+.lc-row b{color:var(--ink); font-weight:600}
+.lc-row small{margin-left:4px; font-size:.72rem; color:var(--muted)}
+.lc-row.e{--c:#00b8a3}.lc-row.m{--c:#ffb800}.lc-row.h{--c:#ef4743}
+
 /* ---------- Buttons ---------- */
 .links{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; transform:translateZ(30px)}
 .links a{
@@ -136,17 +168,24 @@ h1{
   background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.18);
   transition:background .25s,color .25s,transform .25s,box-shadow .25s;
 }
-.links a svg{width:14px;height:14px;transition:transform .25s}
+.links a svg{width:18px;height:18px;flex:none;transition:transform .25s,color .25s}
 .links a:hover,
 .links a:focus-visible{
   background:#fff; color:#07070b; transform:translateY(-3px);
   box-shadow:0 10px 26px rgba(255,255,255,.22);
 }
 .links a:hover svg,
-.links a:focus-visible svg{transform:translate(2px,-2px)}
+.links a:focus-visible svg{transform:scale(1.15)}
 .links a:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+
+/* brand colours on hover */
+.links a.lc-btn:hover svg,.links a.lc-btn:focus-visible svg{color:#ffa116}
+.links a.li:hover svg,.links a.li:focus-visible svg{color:#0A66C2}
+.links a.mail:hover svg,.links a.mail:focus-visible svg{color:#EA4335}
+
 /* ---------- Hover message (LinkedIn) ---------- */
 .links a.has-tip{position:relative}
+.links a.has-tip:not([href]){cursor:default}
 
 .links a.has-tip::after{
   content:attr(data-tip);
@@ -159,7 +198,6 @@ h1{
   opacity:0; pointer-events:none;
   transition:opacity .2s, transform .2s;
 }
-
 /* little arrow under the bubble */
 .links a.has-tip::before{
   content:""; position:absolute; left:50%; bottom:calc(100% + 6px);
@@ -168,7 +206,6 @@ h1{
   transform:translateX(-50%) rotate(45deg);
   opacity:0; pointer-events:none; transition:opacity .2s;
 }
-
 .links a.has-tip:hover::after,
 .links a.has-tip:focus-visible::after{opacity:1; transform:translate(-50%,0) scale(1)}
 .links a.has-tip:hover::before,
@@ -184,18 +221,19 @@ h1{
 
   /* big avatar on the left, spanning every row */
   .avatar{
-    grid-column:1; grid-row:1 / span 6; align-self:center;
+    grid-column:1; grid-row:1 / span 7; align-self:center;
     width:220px; height:220px; margin:0; padding:4px;
   }
   .avatar-inner span{font-size:3.6rem}
 
   /* everything else stacks on the right */
-  .status,h1,.role,.bio,.skills,.links{grid-column:2}
+  .status,h1,.role,.bio,.skills,.lc,.links{grid-column:2}
   .status{justify-self:start; margin-bottom:18px}
   h1{font-size:3.6rem; margin-bottom:8px}
   .role{font-size:1.25rem; margin-bottom:20px}
   .bio{max-width:46ch; margin:0 0 24px; font-size:1.05rem}
-  .skills{justify-content:flex-start; margin-bottom:30px}
+  .skills{justify-content:flex-start; margin-bottom:26px}
+  .lc{justify-self:start; margin:0 0 26px; max-width:380px}
   .links{justify-content:flex-start}
 }
 
@@ -205,9 +243,12 @@ h1{
   .avatar{width:260px; height:260px}
   h1{font-size:4.2rem}
 }
+
 /* ---------- Responsive & accessibility ---------- */
 @media (max-width:480px){
   .card{padding:36px 22px 28px; border-radius:24px}
+  .lc{gap:16px; padding:14px 16px}
+  .lc-ring{width:84px; height:84px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important; transition:none!important}
