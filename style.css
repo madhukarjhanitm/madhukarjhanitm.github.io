@@ -132,6 +132,34 @@ h1{
 .links a:hover svg,
 .links a:focus-visible svg{transform:translate(2px,-2px)}
 .links a:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+/* ---------- Hover message (LinkedIn) ---------- */
+.links a.has-tip{position:relative}
+
+.links a.has-tip::after{
+  content:attr(data-tip);
+  position:absolute; left:50%; bottom:calc(100% + 12px);
+  transform:translate(-50%,6px) scale(.96);
+  padding:7px 14px; border-radius:12px; white-space:nowrap;
+  font-size:.82rem; font-weight:500; color:var(--ink);
+  background:rgba(20,20,30,.95); border:1px solid var(--line);
+  box-shadow:0 10px 24px rgba(0,0,0,.5);
+  opacity:0; pointer-events:none;
+  transition:opacity .2s, transform .2s;
+}
+
+/* little arrow under the bubble */
+.links a.has-tip::before{
+  content:""; position:absolute; left:50%; bottom:calc(100% + 6px);
+  width:10px; height:10px; background:rgba(20,20,30,.95);
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  transform:translateX(-50%) rotate(45deg);
+  opacity:0; pointer-events:none; transition:opacity .2s;
+}
+
+.links a.has-tip:hover::after,
+.links a.has-tip:focus-visible::after{opacity:1; transform:translate(-50%,0) scale(1)}
+.links a.has-tip:hover::before,
+.links a.has-tip:focus-visible::before{opacity:1}
 
 /* ---------- Responsive & accessibility ---------- */
 @media (max-width:480px){
