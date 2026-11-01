@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Name – Developer & Designer</title>
+
+<!-- Fonts (needs internet) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Your styles -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="orb-wrap" id="w1"><div class="orb o1"></div></div>
+  <div class="orb-wrap" id="w2"><div class="orb o2"></div></div>
+  <div class="orb-wrap" id="w3"><div class="orb o3"></div></div>
+</div>
+<div class="grid" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<main class="card" id="card">
+  <div class="avatar">
+    <div class="avatar-inner">
+      <span>YN</span>
+      <!-- Put your photo in this folder as photo.png. Initials show until it loads. -->
+      <img src="photo.png" alt="Portrait of Your Name" onerror="this.remove()">
+    </div>
+  </div>
+
+  <div class="status"><span class="dot"></span>Open to internships</div>
+
+  <h1>Your Name</h1>
+  <p class="role">Developer &amp; Designer</p>
+  <p class="bio">I build clean, fast things for the web and care a lot about how they feel to use. Welcome to my corner of the internet.</p>
+
+  <ul class="skills">
+    <li>HTML &amp; CSS</li>
+    <li>JavaScript</li>
+    <li>Python</li>
+    <li>UI design</li>
+  </ul>
+
+  <nav class="links" aria-label="Contact links">
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    <a href="mailto:your.email@example.com">Email
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+  </nav>
+</main>
+
+<!-- Your script -->
+<script src="script.js"></script>
+</body>
+</html>
