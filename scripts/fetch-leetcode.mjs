@@ -26,7 +26,7 @@ const res = await fetch('https://leetcode.com/graphql', {
 });
 
 if (!res.ok) {
-  console.error('LeetCode answered with HTTP ' + res.status + '. Keeping the old stats.json.');
+  console.error('LeetCode answered with HTTP ' + res.status + ': ' + (await res.text()).slice(0, 300));
   process.exit(1);
 }
 

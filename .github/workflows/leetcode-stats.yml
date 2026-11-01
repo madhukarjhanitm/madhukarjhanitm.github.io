@@ -16,12 +16,12 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Fetch LeetCode stats
         run: node scripts/fetch-leetcode.mjs
         env:
-          LEETCODE_USER: Madhukar Jha   # <-- change this
+          LEETCODE_USER: MadhukarJha   # <-- change this
 
       - name: Commit stats.json if it changed
         run: |
