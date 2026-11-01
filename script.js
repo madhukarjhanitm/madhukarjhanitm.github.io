@@ -75,8 +75,8 @@
     // Parallax on the background orbs
     orbs.forEach(function (o) {
       o.el.style.transform =
-        'translate(' + (currentX * o.strength * 120) + 'px,' +
-                       (currentY * o.strength * 120) + 'px)';
+        'translate(' + (currentX * o.strength * 200) + 'px,' +
+                       (currentY * o.strength * 200) + 'px)';
     });
 
     // Phones keep animating; computers stop once settled

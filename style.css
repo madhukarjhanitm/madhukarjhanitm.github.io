@@ -18,12 +18,25 @@ body{
 
 /* ---------- Background ---------- */
 .bg{position:fixed; inset:0; z-index:-2; overflow:hidden}
-.orb-wrap{position:absolute; will-change:transform}
-.orb{border-radius:50%; filter:blur(90px); opacity:.55; animation:drift 14s ease-in-out infinite alternate}
-.o1{width:460px;height:460px;background:var(--pink);top:-140px;left:-120px}
-.o2{width:560px;height:560px;background:var(--indigo);bottom:-240px;right:-140px;animation-delay:-6s}
-.o3{width:380px;height:380px;background:var(--cyan);top:34%;left:58%;animation-delay:-3s;opacity:.4}
-@keyframes drift{from{transform:scale(1) translateY(0)}to{transform:scale(1.18) translateY(24px)}}
+.orb-wrap{position:absolute; inset:0; pointer-events:none; will-change:transform}
+.orb{position:absolute; border-radius:50%; filter:blur(110px); opacity:.6; will-change:transform}
+
+.o1{width:50vmax;height:50vmax;background:var(--pink);top:-18%;left:-14%;animation:float1 11s ease-in-out infinite alternate}
+.o2{width:60vmax;height:60vmax;background:var(--indigo);bottom:-28%;right:-16%;animation:float2 14s ease-in-out infinite alternate}
+.o3{width:52vmax;height:52vmax;background:var(--cyan);top:22%;left:34%;opacity:.5;animation:float3 9s ease-in-out infinite alternate}
+
+@keyframes float1{
+  0%  {transform:translate(0,0) scale(1)}
+  100%{transform:translate(32vw,26vh) scale(1.25)}
+}
+@keyframes float2{
+  0%  {transform:translate(0,0) scale(1)}
+  100%{transform:translate(-34vw,-24vh) scale(1.2)}
+}
+@keyframes float3{
+  0%  {transform:translate(0,0) scale(1)}
+  100%{transform:translate(-28vw,22vh) scale(1.3)}
+}
 
 .grid{
   position:fixed; inset:0; z-index:-1; opacity:.5;
@@ -161,6 +174,37 @@ h1{
 .links a.has-tip:hover::before,
 .links a.has-tip:focus-visible::before{opacity:1}
 
+/* ---------- Laptop & desktop layout ---------- */
+@media (min-width:1000px){
+  .card{
+    max-width:880px; padding:56px 64px;
+    display:grid; grid-template-columns:auto 1fr; column-gap:64px;
+    align-items:center; text-align:left; border-radius:36px;
+  }
+
+  /* big avatar on the left, spanning every row */
+  .avatar{
+    grid-column:1; grid-row:1 / span 6; align-self:center;
+    width:220px; height:220px; margin:0; padding:4px;
+  }
+  .avatar-inner span{font-size:3.6rem}
+
+  /* everything else stacks on the right */
+  .status,h1,.role,.bio,.skills,.links{grid-column:2}
+  .status{justify-self:start; margin-bottom:18px}
+  h1{font-size:3.6rem; margin-bottom:8px}
+  .role{font-size:1.25rem; margin-bottom:20px}
+  .bio{max-width:46ch; margin:0 0 24px; font-size:1.05rem}
+  .skills{justify-content:flex-start; margin-bottom:30px}
+  .links{justify-content:flex-start}
+}
+
+/* very large monitors */
+@media (min-width:1600px){
+  .card{max-width:1000px; padding:68px 80px; column-gap:80px}
+  .avatar{width:260px; height:260px}
+  h1{font-size:4.2rem}
+}
 /* ---------- Responsive & accessibility ---------- */
 @media (max-width:480px){
   .card{padding:36px 22px 28px; border-radius:24px}
